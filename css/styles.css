@@ -1,0 +1,115 @@
+
+/* Body General Styles */
+body {
+  min-width: 1024;
+  background: linear-gradient(135deg, rgba(230,230,230,1) 0%, rgba(230,230,230,1) 15%, rgba(158,158,158,1) 35%, rgba(209,209,209,1) 65%,rgba(240,240,240,1) 85%,rgba(199,199,199,1)95%);
+}
+
+table, header{
+  min-width: 1024;
+  border-radius: 15px;
+  background: linear-gradient(to bottom, rgba(149,204,155,1) 0%, rgba(32,161,13,1) 56%, rgba(32,161,13,1) 100%);
+  box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.75);
+}
+
+tr, td {
+  padding: 5px;
+  height: 150px;
+}
+
+h2{
+  font-size: 50px;
+}
+
+form{
+
+}
+
+.pokemon-font{
+  -webkit-text-stroke: 1px #2F62B3;
+  font-weight:bolder;
+  text-transform:uppercase;
+  letter-spacing:-2pt;
+  word-spacing:3pt;
+  font-family: 'Concert One', cursive;
+  color: #FFCD00;
+}
+
+/* Start Screen Styles */
+.logo {
+}
+
+.selection-screen{
+  border-radius: 10px;
+  background-color: #2F62B3;
+  border: none;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 35px;
+  width: 250px;
+}
+
+/* Game Header Styles*/
+.game-header{
+}
+
+.header-data{
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.game-logo{
+  max-height: 100px;
+}
+
+.star-score{
+  width: 70px;
+  height: 70px;
+}
+
+/* Game Board Styles*/
+.game-board{
+}
+
+.tile {
+  padding: 2px;
+  width: 140px;
+  height: 140px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: red;
+  border-radius: 15px;
+  background: linear-gradient(to bottom, rgba(76,76,76,1) 0%, rgba(179,179,179,1) 53%, rgba(179,179,179,1) 100%);
+  cursor: pointer;
+  box-shadow: 3px 3px 5px 1px rgba(0,0,0,0.75);
+}
+
+.flip-container:hover .flipper, .flip-container.hover .flipper, .flip-container.flip .flipper {
+	transform: rotateY(180deg);
+}
+
+/* Modal Styles */
+
+.modal-stars{
+  width: 100px;
+  height: 100px;
+}
+
+#reset-button{
+  border-radius: 10px;
+  background-color: #2F62B3;
+  border: none;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 35px;
+  width: 100%;
+}
+
+.modal-font{
+  font-size: 30px;
+  align-self: center;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pokemon Memory Game</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+
+    <!-- componentes da tela de inicio -->
+    <img class="logo start-screen row" src="images/pokemon_logo.png"/>
+    <a class="logo start-screen row" href="https://fontmeme.com/pt/fonte-de-pokemon/"><img src="https://fontmeme.com/permalink/180421/6b0bf308602396f187c32cdf1c3fe692.png" alt="fonte-de-pokemon" border="0"></a>
+
+    <div class="start-screen row">
+      <h2 class="pokemon-font">Choose Dificculty</h2>
+      <form id="dificculty-selection" class="selectionForm">
+        <input type="button" value="easy" class="pokemon-font selection-screen start-screen radio-button"></input>
+        <input type="button" value="medium" class="pokemon-font selection-screen start-screen radio-button"></input>
+        <input type="button" value="hard" class="pokemon-font selection-screen start-screen radio-button"></input>
+        <button class="pokemon-font selection-screen">Select</button>
+      </form>
+    </div>
+
+    <!-- componentes da tela de jogo -->
+    <div class="game-board row">
+      <img class="game-logo" src="images/pokemon_logo.png"/>
+      <header class="game-header row">
+        <div class="pokemon-font header-data">
+          Tentativas
+          <a id ="tries">0</a>
+        </div>
+        <div>
+          <img class="star-score" id="star1" src="images/staryu.png"/>
+          <img class="star-score" id="star3" src="images/staryu.png"/>
+          <img class="star-score" id="star2" src="images/staryu.png"/>
+        </div>
+        <div class="pokemon-font header-data">
+          Tempo
+          <a id="time">0</a>
+        </div>
+      </header>
+      <table id="memory-board" class="row"></table>
+    </div>
+    <script src="js/designs.js"></script>
+  </div>
+
+
+  <!-- Modal Game Over-->
+  <div class="modal fade" id="game-over" tabindex="-1" role="dialog" aria-labelledby="project2-ABND-label">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <a href="https://fontmeme.com/pokemon-font/"><img src="https://fontmeme.com/permalink/180422/d66ebf29676c9a452d4c2a3adcd8f4ed.png" alt="pokemon-font" border="0"></a>
+        </div>
+        <div class="modal-body">
+          <p class="pokemon-font modal-font">
+            Voce Utilizou <a id="modal-moves"></a> Movimentos
+          </p>
+          <p class="pokemon-font modal-font">
+            Voce Gastou <a id="modal-time"></a> Segundos para Terminar
+          </p>
+          <div id="modal-stars-container">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="reset-button" class="btn btn-default" data-dismiss="modal">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

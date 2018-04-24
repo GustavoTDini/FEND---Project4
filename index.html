@@ -12,10 +12,10 @@
   <div class="container">
 
     <!-- componentes da tela de inicio -->
-    <img class="logo start-screen row" src="images/pokemon_logo.png"/>
-    <a class="logo start-screen row" href="https://fontmeme.com/pt/fonte-de-pokemon/"><img src="https://fontmeme.com/permalink/180421/6b0bf308602396f187c32cdf1c3fe692.png" alt="fonte-de-pokemon" border="0"></a>
+    <img class="logo start-screen d-flex justify-content-center" src="images/pokemon_logo.png"/>
+    <a class="d-flex justify-content-center" href="https://fontmeme.com/pt/fonte-de-pokemon/"><img class="start-screen d-flex justify-content-center" src="https://fontmeme.com/permalink/180421/6b0bf308602396f187c32cdf1c3fe692.png" alt="fonte-de-pokemon" border="0"></a>
 
-    <div class="start-screen row">
+    <div class="start-screen">
       <h2 class="pokemon-font">Choose Dificculty</h2>
       <form id="dificculty-selection" class="selectionForm">
         <input type="button" value="easy" class="pokemon-font selection-screen start-screen radio-button"></input>
@@ -24,11 +24,13 @@
         <button class="pokemon-font selection-screen">Select</button>
       </form>
     </div>
+  </div>
 
     <!-- componentes da tela de jogo -->
-    <div class="game-board row">
+    <div class="container">
+    <div class="game-board">
       <img class="game-logo" src="images/pokemon_logo.png"/>
-      <header class="game-header row">
+      <header class="game-header">
         <div class="pokemon-font header-data">
           Tentativas
           <a id ="tries">0</a>
@@ -43,7 +45,7 @@
           <a id="time">0</a>
         </div>
       </header>
-      <table id="memory-board" class="row"></table>
+      <table id="memory-board"></table>
     </div>
     <script src="js/designs.js"></script>
   </div>

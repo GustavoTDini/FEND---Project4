@@ -54,11 +54,14 @@ let totalCards = [];
 let matchedTiles = 0;
 let totalMatches = 0;
 
-// inicialização do temporizador
-let passedTime = setInterval(function(){
+// Função do temporizador
+let countUp = function(){
   $("#time").text(time);
   time ++;
-}, 1000);
+}
+
+
+//let passedTime = 0;
 
 // função que define a partir da dificuldade o tamanho do board, a definição das estrelas,
 //quais cartas serão usadas, embaralha as cartas e define o total de matches para terminar o jogo
@@ -105,14 +108,21 @@ return shuffleArray(cardDeck);
 
 // função para resetar os elementos para estarem prontos para inicio de jogo
 function resetElements(){
-  $("#star1").show();
-  $("#star2").show();
-  $("#star3").show();
-  $('.start-screen').hide();
-  $('.game-board').show();
   time = 0;
   score = 0;
   matchedTiles = 0;
+  cardsflipped = [];
+  stars = 3;
+  tiles = [];
+  $("tr").remove();
+  $("#star1").show();
+  $("#star2").show();
+  $("#star3").show();
+  $('#tries').empty().append(score);
+  $('#time').empty().append(time);
+  $('.start-screen').hide();
+  $('.game-board').show();
+  passedTime = setInterval(countUp,1000);
 }
 
 // função primaria que irá desenhar o board, com base na dificuldade e separar as cartas
@@ -120,13 +130,7 @@ function resetElements(){
 function drawBoard() {
   var id;
   var face;
-  matchedTiles = 0;
-  stars = 3;
-
-  setInterval(passedTime);
-
-  // apaga quaisquer valores anteriores da Board
-  $("tr").remove();
+  resetElements();
 
   // pega os  tamanho do board a partir de selectDifficulty()
   selectDifficulty($(".radio-button.active").val());
@@ -151,7 +155,7 @@ function drawBoard() {
     tiles[i].matched = false;
   }
 
-  resetElements();
+
 }
 
 // listener para definir a dificuldade a partir da escolha dos botões iniciais
@@ -163,7 +167,9 @@ let setDiffucultyButton = $('.radio-button').click(function(){
 
 // listener para selecionar a dificuldade estabelecida pelos radio-buttons e chamar o drawBoard()
 let submit = $("#dificculty-selection").submit(function(){
-  drawBoard();
+  if ($('.radio-button').hasClass('active')){
+      drawBoard();
+  }
   event.preventDefault();
 });
 
@@ -172,7 +178,7 @@ let submit = $("#dificculty-selection").submit(function(){
 function turnTile(x,y) {
   for (var i = 0; i < tiles.length; i++) {
     if (tiles[i].x === x && tiles[i].y === y){
-      if (cardsflipped.length < 2 && !tiles[i].isFaceUp && !tiles[i].matched){
+      if (!tiles[i].isFaceUp && !tiles[i].matched && cardsflipped.length <= 2){
         tiles[i].faceUp();
         cardsflipped.push(tiles[i]);
       }
@@ -186,16 +192,16 @@ function testTile() {
   score++;
   $("#tries").text(score);
   if (cardsflipped[0].face === cardsflipped[1].face){
-    for (var i = 0; i < tiles.length; i++){
-      if (tiles[i].face === cardsflipped[0].face){
-        tiles[i].matched = true;
-      }
-    }
+    cardsflipped[0].matched = true;
+    cardsflipped[1].matched = true;
     cardsflipped = [];
     matchedTiles++;
+  } else {
+      delayFlipBack();
+    }
+    eraseStar();
+    gameOver();
   }
-  delayFlipBack();
-}
 
 // metodo para atrasar o retorno das cartas na posição para baixo, caso elas não
 // façam match
@@ -204,9 +210,9 @@ function delayFlipBack(){
     for (var i = 0; i < tiles.length; i++){
       if (tiles[i].matched == false){
         tiles[i].faceDown();
+        cardsflipped = [];
       }
     }
-    cardsflipped = [];
   }, 1000);
 }
 
@@ -216,15 +222,15 @@ function eraseStar(){
   switch (score) {
     case starDown[0]:
       stars = 2;
-      $("#star1").remove();
+      $("#star1").hide();
       break;
     case starDown[1]:
       stars = 1;
-      $("#star2").remove();
+      $("#star2").hide();
       break;
     case starDown[2]:
       stars = 0;
-      $("#star3").remove();
+      $("#star3").hide();
       break;
   }
 }
@@ -234,8 +240,9 @@ function eraseStar(){
 function gameOver(){
   if (matchedTiles === totalMatches){
     clearInterval(passedTime);
-    $("#modal-time").append(time);
-    $("#modal-moves").append(score);
+    $("#modal-time").empty().append(time);
+    $("#modal-moves").empty().append(score);
+    $("#modal-stars-container").empty();
     for (let i = 0; i < stars; i++){
       $("#modal-stars-container").append('<img class = "modal-stars" src="Images/staryu.png" alt = "modal stars ranking"/>');
     }
@@ -254,13 +261,10 @@ let switchCard = $("#memory-board").on("click", "td", function() {
   let x = parseInt(xy[5]);
   let y = parseInt(xy[4]);
 
-  turnTile(x,y);
-
+  if (cardsflipped.length < 2){
+    turnTile(x,y);
+  }
   if (cardsflipped.length === 2){
     testTile();
   }
-
-  eraseStar();
-
-  gameOver();
 });

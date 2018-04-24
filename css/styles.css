@@ -1,8 +1,16 @@
+* {
+  outline: 1px solid red;
+}
+
 
 /* Body General Styles */
 body {
+  height: 100%;
+  margin-bottom: 100px;
+  margin-left: auto;
+  margin-right: auto;
   min-width: 1024px;
-  display: flex;
+  display: flex column;
   justify-content: center;
   background: linear-gradient(135deg, rgba(230,230,230,1) 0%, rgba(230,230,230,1) 15%, rgba(158,158,158,1) 35%, rgba(209,209,209,1) 65%,rgba(240,240,240,1) 85%,rgba(199,199,199,1)95%);
 }
@@ -20,11 +28,19 @@ tr, td {
 }
 
 h2{
+  text-align: center;
   font-size: 50px;
+  justify-content: center;
 }
 
 form{
-  justify-content: center;
+  flex-wrap: wrap;
+  display: flex;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+
+  justify-content: space-around;
 }
 
 .pokemon-font{
@@ -38,12 +54,32 @@ form{
 }
 
 /* Start Screen Styles */
+.start-screen{
+  height: 100%;
+  margin-bottom: 200px;
+  margin-top: 50px;
+  width: 100%;
+  justify-content:center;
+  align-items: center;
+}
+
 .logo {
+  display: block;
   width: 100%;
   padding: 20px;
 }
 
-.selection-screen{
+.logo-small {
+  display: block;
+  justify-content: center;
+  width: 40%;
+  padding: 20px;
+  align-self: center;
+  margin: auto;
+}
+
+.button{
+  display: wrap;
   border-radius: 10px;
   background-color: #2F62B3;
   border: none;
@@ -55,6 +91,7 @@ form{
   width: 250px;
 }
 
+
 /* Game Header Styles*/
 .game-header{
 }
@@ -65,7 +102,11 @@ form{
 }
 
 .game-logo{
+  display: block;
   max-height: 100px;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .star-score{

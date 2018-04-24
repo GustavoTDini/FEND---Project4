@@ -9,26 +9,22 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <div class="container">
+  <div class="container start-screen">
 
     <!-- componentes da tela de inicio -->
-    <img class="logo start-screen d-flex justify-content-center" src="images/pokemon_logo.png"/>
-    <a class="d-flex justify-content-center" href="https://fontmeme.com/pt/fonte-de-pokemon/"><img class="start-screen d-flex justify-content-center" src="https://fontmeme.com/permalink/180421/6b0bf308602396f187c32cdf1c3fe692.png" alt="fonte-de-pokemon" border="0"></a>
-
-    <div class="start-screen">
-      <h2 class="pokemon-font">Choose Dificculty</h2>
-      <form id="dificculty-selection" class="selectionForm">
-        <input type="button" value="easy" class="pokemon-font selection-screen start-screen radio-button"></input>
-        <input type="button" value="medium" class="pokemon-font selection-screen start-screen radio-button"></input>
-        <input type="button" value="hard" class="pokemon-font selection-screen start-screen radio-button"></input>
-        <button class="pokemon-font selection-screen">Select</button>
+    <img class="logo d-flex justify-content-center" src="images/pokemon_logo.png"/>
+    <img class="logo-small d-flex justify-content-center" src="https://fontmeme.com/permalink/180421/6b0bf308602396f187c32cdf1c3fe692.png" alt="fonte-de-pokemon">
+    <h2 class="pokemon-font">Choose Dificculty</h2>
+      <form id="dificculty-selection" class="selection-form">
+        <input type="button" value="easy" class="pokemon-font button radio-button"></input>
+        <input type="button" value="medium" class="pokemon-font button radio-button"></input>
+        <input type="button" value="hard" class="pokemon-font button radio-button"></input>
+        <button class="pokemon-font button">Select</button>
       </form>
-    </div>
   </div>
 
     <!-- componentes da tela de jogo -->
-    <div class="container">
-    <div class="game-board">
+    <div class="container game-board">
       <img class="game-logo" src="images/pokemon_logo.png"/>
       <header class="game-header">
         <div class="pokemon-font header-data">
@@ -46,9 +42,8 @@
         </div>
       </header>
       <table id="memory-board"></table>
+      <script src="js/designs.js"></script>
     </div>
-    <script src="js/designs.js"></script>
-  </div>
 
 
   <!-- Modal Game Over-->

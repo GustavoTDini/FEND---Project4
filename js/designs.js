@@ -128,8 +128,10 @@ function resetElements(){
 // função primaria que irá desenhar o board, com base na dificuldade e separar as cartas
 // entre as colunas
 function drawBoard() {
-  var id;
-  var face;
+  let id;
+  let face;
+  let imgId;
+  let tileId;
   resetElements();
 
   // pega os  tamanho do board a partir de selectDifficulty()
@@ -144,17 +146,17 @@ function drawBoard() {
       tileId = "tile" + rowIndex + colIndex;
       $("tr").last().append('<td id="'+ tileId + '"></td>');
       imgId = "card" + rowIndex + colIndex;
-      $("td").last().append('<img class="tile flipper" id="'+ imgId +'" src="" alt="'+tileId+'Image"/>')
+      $("td").last().append('<img class="tile start-animation" id="'+ imgId +'" src="" alt="'+tileId+'Image"/>')
       face = totalCards.shift();
       tiles.push(new Tile(colIndex, rowIndex, face));
     }
   }
 
+
   for (let i = 0; i < tiles.length; i++) {
     tiles[i].faceDown();
     tiles[i].matched = false;
   }
-
 
 }
 
@@ -257,6 +259,7 @@ function gameOver(){
 //listener para definir o evento de clicar na carta, nesta função, é testada a paridade
 // das cartas a pontuação de estrelas e verifica se é possivel o termino do jogo
 let switchCard = $("#memory-board").on("click", "td", function() {
+
   let xy = $(this).attr("id");
   let x = parseInt(xy[5]);
   let y = parseInt(xy[4]);

@@ -156,9 +156,37 @@ form{
   box-shadow: 3px 3px 5px 1px rgba(0,0,0,0.75);
 }
 
-.flipper {
-	transform: rotateY(180deg);
+
+/* animations styles */
+
+@keyframes turn-card-start {
+    0%   {transform: rotateY(180deg);}
+    25%  {transform: rotateY(135deg);}
+    50%  {transform: rotateY(90deg);}
+    75%  {transform: rotateY(45deg);}
+    100% {transform: rotateY(0deg);}
 }
+
+@keyframes turn-card {
+    0%   {transform: rotateY(180deg);}
+    25%  {transform: rotateY(135deg);}
+    50%  {transform: rotateY(90deg);}
+    75%  {transform: rotateY(45deg);}
+    100% {transform: rotateY(0deg);}
+}
+
+@keyframes match-card {
+    0%   {transform: scale(1);}
+    50%  {transform: scale(1.2);}
+    100% {transform: scale(1);}
+}
+
+.start-animation{
+  animation-name: turn-card-start;
+  animation-duration: 1s;
+}
+
+
 
 /* Modal Styles */
 

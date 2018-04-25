@@ -1,61 +1,87 @@
-@media screen and (max-width:450px) {
-  .logo-img {
-    height: 50px;
+@media screen and (max-width:600px) {
+  table, header, body{
+    min-width: 430px;
+  }
+
+  form{
+    max-width: 300px;
+  }
+
+  tr, td {
+    padding: 5px;
+    height: 70px;
+  }
+
+  .tile {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 60px;
+    height: 60px;
+    border-style: solid;
+  }
+
+  .star-score{
+    width: 35px;
+    height: 35px;
+  }
+
+}
+
+@media screen and (min-width:600px) and (max-width: 800px) {
+  table, header, body{
+    min-width: 550px;
+  }
+
+  form{
+    max-width: 300px;
+  }
+
+  tr, td {
+    padding: 5px;
+    height: 100px;
+  }
+
+  .tile {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 90px;
+    height: 90px;
+  }
+
+  .star-score{
     width: 50px;
-
-  }
-
-  body {
-    text-align: center;
-  }
-
-  h1 {
-    font-size: 24px;
-
-  }
-
-  h2 {
-    font-size: 20px;
-
-  }
-
-  h3 {
-    font-size: 18px;
-
-  }
-
-  h4 {
-    font-size: 16px;
-
-  }
-
-  h1,
-  h2,
-  h3,
-  h4 {
-    text-align: center;
-
-  }
-
-  header {
-    display: block;
-
+    height: 50px;
   }
 }
 
-@media screen and (min-width:650px) and (max-width: 1024px) {
-  header {
-    display: flex;
-    justify-content: space-between;
-
+@media screen and (min-width:800px) and (max-width: 1100px) {
+  table, header, body{
+    min-width: 750px;
   }
-}
 
-@media screen and (min-width:1024px) {
-  .container {
-    width: 1024px;
-    margin-left: auto;
-    margin-right: auto;
+  form{
+    max-width: 500px;
+  }
 
+  .radio-button{
+      width: 150px;
+  }
+
+  tr, td {
+    padding: 5px;
+    height: 120px;
+  }
+
+  .tile {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 110px;
+    height: 110px;
+    border-style: solid;
+  }
+
+  .star-score{
+    width: 50px;
+    height: 50px;
   }
 }

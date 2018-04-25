@@ -10,7 +10,6 @@ body {
   margin-left: auto;
   margin-right: auto;
   min-width: 1024px;
-  display: flex column;
   justify-content: center;
   background: linear-gradient(135deg, rgba(230,230,230,1) 0%, rgba(230,230,230,1) 15%, rgba(158,158,158,1) 35%, rgba(209,209,209,1) 65%,rgba(240,240,240,1) 85%,rgba(199,199,199,1)95%);
 }
@@ -157,7 +156,7 @@ form{
   box-shadow: 3px 3px 5px 1px rgba(0,0,0,0.75);
 }
 
-.flip-container:hover .flipper, .flip-container.hover .flipper, .flip-container.flip .flipper {
+.flipper {
 	transform: rotateY(180deg);
 }
 

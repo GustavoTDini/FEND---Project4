@@ -4,6 +4,7 @@
   <title>Pokemon Memory Game</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animation.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -20,7 +21,7 @@
         <input type="button" value="easy" class="pokemon-font button radio-button"></input>
         <input type="button" value="medium" class="pokemon-font button radio-button"></input>
         <input type="button" value="hard" class="pokemon-font button radio-button"></input>
-        <button class="pokemon-font button">Select</button>
+        <button class="pokemon-font button" id="submit-button">Select</button>
       </form>
   </div>
 
@@ -28,18 +29,23 @@
     <div class="container game-board">
       <img class="game-logo" src="images/pokemon_logo.png"/>
       <header class="game-header">
-        <div class="pokemon-font header-data">
-          Tentativas
-          <a id ="tries">0</a>
+        <div class="header-data">
+          <div class="pokemon-font">
+            Tentativas:
+            <a id="tries">0</a>
+          </div>
+          <div class="pokemon-font">
+            Tempo:
+            <a id="time">0</a>
+          </div>
         </div>
         <div>
           <img class="star-score" id="star1" src="images/staryu.png"/>
           <img class="star-score" id="star3" src="images/staryu.png"/>
           <img class="star-score" id="star2" src="images/staryu.png"/>
         </div>
-        <div class="pokemon-font header-data">
-          Tempo
-          <a id="time">0</a>
+        <div class="header-data">
+          <button class="button pokemon-font" id="reset-button">Reset</button>
         </div>
       </header>
       <table id="memory-board"></table>
@@ -65,7 +71,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" id="reset-button" class="btn btn-default button" data-dismiss="modal">Restart</button>
+          <button type="button" id="restart-button" class="btn btn-default button pokemon-font" data-dismiss="modal">Restart</button>
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@
 
 * [Instructions](#instructions)
 * [Contributing](#contributing)
+* [Dependency](#dependency)
 
 ## Instructions
 
@@ -26,3 +27,17 @@ For specific, detailed instructions, look at the project instructions in the [Ud
 This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Dependency
+
+Para o Funcionamento deste projeto foi utilizado:
+
+bootstrap para aplicação de funções de responsividade e inicialização de Modal
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+Jquery para a manipulação do DOM
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+Utilizado a Font Concert One do Google Fonts
+<link href="https://fonts.googleapis.com/css?family=Concert+One" rel="stylesheet">

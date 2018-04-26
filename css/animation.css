@@ -1,0 +1,39 @@
+/* animations styles */
+@keyframes turn-card-start {
+    0%   {transform: rotateY(180deg);}
+    25%  {transform: rotateY(135deg);}
+    50%  {transform: rotateY(90deg);}
+    75%  {transform: rotateY(45deg);}
+    100% {transform: rotateY(0deg);}
+}
+
+@keyframes turn-card {
+    0%   {transform: rotateY(180deg);}
+    25%  {transform: rotateY(135deg);}
+    50%  {transform: rotateY(90deg);}
+    75%  {transform: rotateY(45deg);}
+    100% {transform: rotateY(0deg);}
+}
+
+@keyframes match-card {
+    0%   {transform: scale(1);}
+    50%  {transform: scale(1.2);}
+    100% {transform: scale(1);}
+}
+
+.start-animation{
+  animation-name: turn-card-start;
+  animation-duration: 1000ms;
+  backface-visibility:hidden ;
+}
+
+.turn-animation{
+  animation-name: turn-card;
+  animation-duration: 300ms;
+  backface-visibility:hidden ;
+}
+
+.match-animation{
+  animation-name: match-card;
+  animation-duration: 1s;
+}

@@ -8,7 +8,18 @@ let Tile = function (x, y, face){
   this.y = y;
   this.face = face;
 
-};
+  this.turnCardAnimation = function() {
+    tileGrid = "#card" + this.y + this.x;
+    $(tileGrid).removeClass("turn-animation start-animation");
+    void $(tileGrid).offsetWidth;
+    $(tileGrid).addClass("turn-animation");
+  }
+
+  this.matchAnimation = function() {
+    tileGrid = "#card" + this.y + this.x;
+    $(tileGrid).addClass("match-animation");
+  }
+}
 
 // definição de prototypo do tile para baixo, sempre com a mesma imagem
 Tile.prototype.faceDown = function() {
@@ -23,6 +34,8 @@ Tile.prototype.faceUp = function() {
   $(tileGrid).attr("src",this.face);
   this.isFaceUp = true;
 }
+
+
 
 // inicialização das imagens dos cards
 let allCards = [
@@ -68,17 +81,17 @@ let countUp = function(){
 function selectDifficulty(selected){
   if (selected == "easy"){
     boardSize = [5,2];
-    starDown = [10,20,40];
+    starDown = [10,20];
     totalCards = shuffleCards(allCards.slice(0,5));
     totalMatches = 5;
   } else if (selected == "medium"){
     boardSize = [5,4];
-    starDown = [20,40,80];
+    starDown = [20,40];
     totalCards = shuffleCards(allCards.slice(1,11));
     totalMatches = 10;
   } else if (selected == "hard") {
     boardSize = [5,6];
-    starDown = [30,60,120];
+    starDown = [30,60];
     totalMatches = 15;
     totalCards = shuffleCards(allCards.slice(0,16));
   };
@@ -152,8 +165,8 @@ function drawBoard() {
     }
   }
 
-
   for (let i = 0; i < tiles.length; i++) {
+    tiles[i].faceUp();
     tiles[i].faceDown();
     tiles[i].matched = false;
   }
@@ -175,13 +188,20 @@ let submit = $("#dificculty-selection").submit(function(){
   event.preventDefault();
 });
 
+let resetGame = $("#reset-button").click(function(){
+  clearInterval(passedTime);
+  drawBoard();
+});
+
 // função que procura a carta selecionada e a vira, considera que a carta já não foi virada,
 // ou que acabou de virar, no maximo 2 de cada vez
 function turnTile(x,y) {
+  let imgId = "#card" + y + x;
   for (var i = 0; i < tiles.length; i++) {
     if (tiles[i].x === x && tiles[i].y === y){
       if (!tiles[i].isFaceUp && !tiles[i].matched && cardsflipped.length <= 2){
         tiles[i].faceUp();
+        tiles[i].turnCardAnimation();
         cardsflipped.push(tiles[i]);
       }
     }
@@ -195,7 +215,9 @@ function testTile() {
   $("#tries").text(score);
   if (cardsflipped[0].face === cardsflipped[1].face){
     cardsflipped[0].matched = true;
+    cardsflipped[0].matchAnimation();
     cardsflipped[1].matched = true;
+    cardsflipped[1].matchAnimation();
     cardsflipped = [];
     matchedTiles++;
   } else {
@@ -230,10 +252,6 @@ function eraseStar(){
       stars = 1;
       $("#star2").hide();
       break;
-    case starDown[2]:
-      stars = 0;
-      $("#star3").hide();
-      break;
   }
 }
 
@@ -249,7 +267,7 @@ function gameOver(){
       $("#modal-stars-container").append('<img class = "modal-stars" src="Images/staryu.png" alt = "modal stars ranking"/>');
     }
     $("#game-over").modal();
-    let resetGame = $("#reset-button").click( function(){
+    let resetGame = $("#restart-button").click( function(){
       $('.start-screen').show();
       $('.game-board').hide();
     })

@@ -11,9 +11,11 @@ let Tile = function (x, y, face){
   this.turnCardAnimation = function() {
     tileGrid = "#card" + this.y + this.x;
     $(tileGrid).removeClass("turn-animation start-animation");
-    void $(tileGrid).offsetWidth;
-    $(tileGrid).addClass("turn-animation");
+    $(tileGrid).addClass("turn-animation").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+      $(this).removeClass("turn-animation start-animation")
+    });
   }
+
 
   this.matchAnimation = function() {
     tileGrid = "#card" + this.y + this.x;
@@ -232,8 +234,9 @@ function testTile() {
 function delayFlipBack(){
   setTimeout(function(){
     for (var i = 0; i < tiles.length; i++){
-      if (tiles[i].matched == false){
+      if (tiles[i].matched === false && tiles[i].isFaceUp === true){
         tiles[i].faceDown();
+        tiles[i].turnCardAnimation();
         cardsflipped = [];
       }
     }

@@ -141,6 +141,7 @@ form{
 }
 
 .tile {
+  object-fit: contain;
   display: block;
   align-self: center;
   justify-content: center;
